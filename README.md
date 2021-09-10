@@ -1,10 +1,20 @@
 # nvidia-docker-test
 
-## make docker instance
+### make docker instance
 
 ```
 docker build -t nvtest .
 ```
+
+### Show command line within docker instance & execute training
+
+```
+docker run -it --gpus all nvtest /bin/bash
+
+python3 train.py
+```
+
+
 
 ## References
 
