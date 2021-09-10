@@ -1,0 +1,6 @@
+version: '3.8'
+services:
+  nvidia_docker:
+    build:
+      context: .
+      dockerfile: Dockerfile
