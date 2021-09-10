@@ -1,22 +1,25 @@
 # nvidia-docker-test
 
+
 ### make docker instance
 
 ```
 docker build -t nvtest .
 ```
 
-### Show command line within docker instance & execute training
+
+### Show commandline within docker instance & execute training & exit from commandlilne
 
 ```
 docker run -it --gpus all nvtest /bin/bash
 
 python3 train.py
+
+exit
 ```
 
 
-
-## References
+# References
 
 [UbuntuにAnacondaで構築するTensorFlow-GPU環境構築 〜CUDA、cuDNNインストール編〜](https://qiita.com/captain-sadami/items/c9be816856c57ef0ae52)
 
