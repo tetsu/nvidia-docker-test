@@ -4,20 +4,39 @@
 ### make docker instance
 
 ```
-docker build -t nvtest .
+docker build -t nv .
 ```
 
 
 ### Show commandline within docker instance & execute training & exit from commandlilne
 
 ```
-docker run -it --gpus all nvtest /bin/bash
+docker run -it --gpus all nv /bin/bash
 
 python3 train.py
 
 exit
 ```
 
+### Reference local files
+
+#### Run Detectron2 Demo
+
+```
+docker run -v ${PWD}/../detectron2:/work/detectron2 -it --gpus all nv /bin/bash
+
+cd detectron2/demo
+
+
+```
+
+### Run Detectron2 demo
+
+```
+python3 demo.py --config-file ../configs/COCO-InstanceSegmentation/mask_rcnn_R_50_FPN_3x.yaml \
+  --input input1.jpg input2.jpg \
+  --opts MODEL.WEIGHTS detectron2://COCO-InstanceSegmentation/mask_rcnn_R_50_FPN_3x/137849600/model_final_f10217.pkl
+```
 
 # References
 
@@ -33,3 +52,4 @@ exit
 
 [Detectron2 Installation](https://detectron2.readthedocs.io/en/latest/tutorials/install.html)
 
+[INSTALLING PREVIOUS VERSIONS OF PYTORCH](https://pytorch.org/get-started/previous-versions/)
