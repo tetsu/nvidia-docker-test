@@ -23,16 +23,22 @@ exit
 #### Run Detectron2 Demo
 
 ```
-docker run -v ${PWD}/../detectron2:/work/detectron2 -it --gpus all nv /bin/bash
+docker run -v ${PWD}/../detectron2:/work/detectron2 -e NVIDIA_VISIBLE_DEVICES=all -it --gpus all nv /bin/bash 
 
 cd detectron2/demo
 
-
+python3 demo.py --config-file ../configs/COCO-InstanceSegmentation/mask_rcnn_R_50_FPN_3x.yaml \
+  --input input1.jpg input2.jpg \
+  --opts MODEL.WEIGHTS detectron2://COCO-InstanceSegmentation/mask_rcnn_R_50_FPN_3x/137849600/model_final_f10217.pkl
 ```
 
-### Run Detectron2 demo
+#### Run 3d-motion-x Demo
 
 ```
+docker run -v ${PWD}/../3d-motion-x:/work/3d-motion-x -e NVIDIA_VISIBLE_DEVICES=all -it --gpus all nv /bin/bash
+
+cd detectron2/demo
+
 python3 demo.py --config-file ../configs/COCO-InstanceSegmentation/mask_rcnn_R_50_FPN_3x.yaml \
   --input input1.jpg input2.jpg \
   --opts MODEL.WEIGHTS detectron2://COCO-InstanceSegmentation/mask_rcnn_R_50_FPN_3x/137849600/model_final_f10217.pkl
@@ -53,3 +59,22 @@ python3 demo.py --config-file ../configs/COCO-InstanceSegmentation/mask_rcnn_R_5
 [Detectron2 Installation](https://detectron2.readthedocs.io/en/latest/tutorials/install.html)
 
 [INSTALLING PREVIOUS VERSIONS OF PYTORCH](https://pytorch.org/get-started/previous-versions/)
+
+
+## Local Env Example
+
+### Anaconda
+
+```
+conda create -n detectron2 python=3.8
+
+conda activate detectron2
+
+conda install pytorch==1.8.0 torchvision==0.9.0 torchaudio==0.8.0 cudatoolkit=11.1 -c pytorch -c conda-forge
+
+conda install -y -c conda-forge numpy=1.20.1
+
+pip install scikit-build cmake cdflib opencv-python matplotlib tensorboardX tqdm
+
+python -m pip install 'git+https://github.com/facebookresearch/detectron2.git'
+```
