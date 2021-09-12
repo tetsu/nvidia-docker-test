@@ -72,9 +72,13 @@ conda activate detectron2
 
 conda install pytorch==1.8.0 torchvision==0.9.0 torchaudio==0.8.0 cudatoolkit=11.1 -c pytorch -c conda-forge
 
+(or) conda install pytorch==1.7.1 torchvision==0.8.2 torchaudio==0.7.2 cudatoolkit=10.1 -c pytorch
+
 conda install -y -c conda-forge numpy=1.20.1
 
 pip install scikit-build cmake cdflib opencv-python matplotlib tensorboardX tqdm
 
 python -m pip install 'git+https://github.com/facebookresearch/detectron2.git'
+
+(or) python -m pip install detectron2 -f https://dl.fbaipublicfiles.com/detectron2/wheels/cu101/torch1.7/index.html
 ```
